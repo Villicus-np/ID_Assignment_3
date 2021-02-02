@@ -3,4 +3,7 @@ Team PK 2.0 Ngee Ann Poly interactive development module year 1.2 assignment 3 T
 
 ## Credits
 Template reference from: http://exill.dk/demo/kitzu/template/video.html  
-Online free logo maker: https://www.freelogodesign.org/
+Online free logo maker: https://www.freelogodesign.org/  
+
+## Website link:
+https://villicus-np.github.io/ID_Assignment_3/
