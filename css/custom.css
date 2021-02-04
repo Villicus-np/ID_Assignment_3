@@ -15,3 +15,24 @@
   right: 34px;
   top: 60px;
 }
+
+.tabOne {
+  background-image: url(../img/global-warming/global-warming-one.jpg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tabTwo {
+  background-image: url(../img/pollution/pollution-one.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tabThree {
+  background-image: url(../img/quiz/quiz-one.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
