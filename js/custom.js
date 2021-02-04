@@ -26,4 +26,4 @@ $(document).mouseup(function(){
 
 $(document).ready(function() {
   $(this).scrollTop(0);
-}
+})
