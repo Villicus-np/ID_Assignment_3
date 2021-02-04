@@ -36,3 +36,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#navbar.scrolled {
+  background-color: #000 !important;
+  transition: background-color 500ms linear;
+}
