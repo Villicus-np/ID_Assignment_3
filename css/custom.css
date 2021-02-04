@@ -9,3 +9,9 @@
 .social-icons i {
   padding: 20px;
 }
+
+.close-btn {
+  position: absolute;
+  right: 34px;
+  top: 60px;
+}
