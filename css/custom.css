@@ -9,7 +9,7 @@
 
 /*----------- ADD YOUR CUSTOM CSS STYLES BELOW -----------*/
 
-.custom-social-icons {
+.arrow-down {
   font-size: 2.5em;
 }
 
@@ -17,3 +17,6 @@
   color: white;
 }
 
+.social-icons i {
+  padding: 20px;
+}
