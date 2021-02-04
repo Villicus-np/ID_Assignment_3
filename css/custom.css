@@ -41,3 +41,7 @@
   background-color: #000 !important;
   transition: background-color 500ms linear;
 }
+
+.nav-link:hover {
+  text-decoration: underline;
+}
