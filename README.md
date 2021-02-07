@@ -21,6 +21,15 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 
 ### quiz.html
 
+## Technologies Used
+1. HTML
+2. CSS
+3. Bootstrap 4
+4. JavaScript
+5. JQuery
+
+## Testing
+
 ## Credits
 Template reference from: http://exill.dk/demo/kitzu/template/video.html  
 Online free logo maker: https://www.freelogodesign.org/  
