@@ -25,6 +25,13 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+}
+
+.globalWarming-header {
+  margin: 0 0 0 50px;
 }
 
 .tabTwo {
@@ -32,6 +39,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pollution-header {
+  margin: 0 50px 0 0;
 }
 
 .tabThree {
@@ -39,6 +54,13 @@
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+}
+
+.quiz-header {
+  margin: 0 0 0 50px;
 }
 
 #navbar.scrolled {
