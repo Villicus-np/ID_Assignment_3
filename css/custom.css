@@ -271,7 +271,7 @@
   margin-bottom: 1000px;
 }
 
-.bg-cover {
+.bg-cover-globalWarming {
   background-size: cover !important;
   background-repeat: no-repeat;
   display: flex;
@@ -290,14 +290,14 @@
   color: white;
 }
 
-/* global-warming.html */
+/* pollution.html */
 
 .page-holder {
   min-height: 100vh;
   margin-bottom: 1000px;
 }
 
-.bg-cover {
+.bg-cover-pollution {
   background-size: cover !important;
   background-repeat: no-repeat;
   display: flex;
