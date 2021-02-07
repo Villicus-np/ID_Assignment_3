@@ -315,3 +315,29 @@
   text-decoration: underline;
   color: white;
 }
+
+/* quiz.html */
+
+.page-holder {
+  min-height: 100vh;
+  margin-bottom: 1000px;
+}
+
+.bg-cover-quiz {
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url(../img/quiz/quiz-two.jpg);
+}
+
+.home-link {
+  color: white;
+  transition: 0.3s;
+}
+
+.home-link:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  color: white;
+}
