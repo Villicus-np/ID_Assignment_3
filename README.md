@@ -5,6 +5,7 @@ Team PK 2.0 Ngee Ann Poly interactive development module year 1.2 assignment 3 T
 Know your earth provides insights of global warming and pollution on earth and how we are destroying earth.  
 
 ## Design Process
+In the design process for this assignment, we aimed to portray a minimalistic mood to our users while retaining complex features such as the animated text in the hero images and the overlay effect in the tabs on hover in *index.html* .
 
 ## Credits
 Template reference from: http://exill.dk/demo/kitzu/template/video.html  
