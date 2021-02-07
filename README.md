@@ -1,5 +1,5 @@
 # ID_Assignment_3
-Team PK 2.0 Ngee Ann Poly interactive development module year 1.2 assignment 3  
+Team PK 2.0 Ngee Ann Polytechnic interactive development module year 1.2 assignment 3  
 Team members:  
 1. Kevin Khew (S10207947)
 2. Eddie Chang (S10207896)
