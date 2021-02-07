@@ -7,6 +7,20 @@ Know your earth provides insights of global warming and pollution on earth and h
 ## Design Process
 In the design process for this assignment, we aimed to portray a minimalistic mood to our users while retaining complex features such as the animated text in the hero images and the overlay effect in the tabs on hover in *index.html* .
 
+## Features
+### index.html
+1. Video background on loop
+2. Animated Text
+3. Overlay effect in tabs on hover
+4. Onclick scroll to tabs
+5. Scroll to top on reload
+
+### globalWarming.html
+
+### pollution.html
+
+### quiz.html
+
 ## Credits
 Template reference from: http://exill.dk/demo/kitzu/template/video.html  
 Online free logo maker: https://www.freelogodesign.org/  
