@@ -15,7 +15,7 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 4. Onclick scroll to tabs
 5. Scroll to top on reload
 
-### globalWarming.html
+### global-warming.html
 
 ### pollution.html
 
