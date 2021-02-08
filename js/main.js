@@ -1,25 +1,3 @@
-/*!
- * Item: Kitzu
- * Description: Personal Portfolio Template
- * Author/Developer: Exill
- * Author/Developer URL: https://themeforest.net/user/exill
- * Version: v1.1.0
- * License: Themeforest Standard Licenses: https://themeforest.net/licenses
- */
-
-/*----------- Table of Contents -----------*/
-
-/**
- * Globals
- * Navbar
- * Home
- * Services
- * Testimonials
- * Contact
- * Preloader
- * Portfolio
- */
-
 (function($) {
   'use strict';
   $(function() {
@@ -178,8 +156,6 @@
         $newWord.removeClass('is-hidden').addClass('is-visible');
       }
     }())
-
-    /* Home variants manager */
 
     // If Video variant
     if ($('.home-area').hasClass('video-variant')) {
