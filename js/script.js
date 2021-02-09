@@ -1,50 +1,9 @@
-// navbar background colour change on scroll
-
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $("#navbar");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-  });
-});
-
-// arrow down icon onclick scroll to tabs
-
-$('#scroll-icon').mousedown(function(){
-  timeout = setInterval(function(){
-      window.scrollBy(0,765);
-  }, 0);
-
-  return false;
-});
-
-$(document).mouseup(function(){
-  clearInterval(timeout);
-  return false;
-});
-
-// force site to scroll to top on load
-
 $(document).ready(function() {
   $(this).scrollTop(0);
   let url = 'https://global-warming.org/api/';
 })
+apiCall("carbon");
 apiCall("temp");
-
-function loadHideGraph(apiLink)
-{
-  var x = document.getElementById(apiLink + "Btn");
-  if (x.innerHTML === "Hide Graph") {
-    x.innerHTML = "Load Graph";
-  } else {
-    x.innerHTML = "Hide Graph";
-  }
-  var y = document.getElementById(apiLink);
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
 
 function apiCall(apiLink)
 {
@@ -66,7 +25,7 @@ function apiCall(apiLink)
   {
     url = url + "arctic-api";
   }
-  
+  console.log(url);
   // Headers result[i] -> land,station,time
   fetch(url)
     .then(response => response.json()) 
@@ -76,10 +35,9 @@ function apiCall(apiLink)
     });
     console.log();
 }
-
+console.log(url);
 function apiData(data) 
 {
-  console.log(url);
   var data_array = [];
 
   //Reminder to change the headers to suit it better
@@ -171,21 +129,6 @@ function drawChart(dataArr,array_Type)
     var xAxis = "Year";
     var yAxis = "Part Per million(ppm)"; 
   }
-  // else if (array_Type == "ice")
-  // {
-  //   data.addColumn('number', 'X');
-  //   data.addColumn('number', 'Extend');
-  //   data.addColumn('number', 'Area');
-    
-  //   var options = {
-  //     hAxis: {
-  //       title: 'Year'
-  //     },
-  //     vAxis: {
-  //       title: 'Million Square km'
-  //     }
-  //   };
-  // }
 
   var options = {
     hAxis: {
