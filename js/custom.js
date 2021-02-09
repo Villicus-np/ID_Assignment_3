@@ -33,16 +33,14 @@ apiCall("temp");
 function loadHideGraph(apiLink)
 {
   var x = document.getElementById(apiLink + "Btn");
+  var y = document.getElementById(apiLink);
+  apiCall(apiLink);
   if (x.innerHTML === "Hide Graph") {
     x.innerHTML = "Load Graph";
+    y.style.display = "none";
   } else {
     x.innerHTML = "Hide Graph";
-  }
-  var y = document.getElementById(apiLink);
-  if (y.style.display === "none") {
     y.style.display = "block";
-  } else {
-    y.style.display = "none";
   }
 }
 
