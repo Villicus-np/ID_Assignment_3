@@ -26,12 +26,6 @@ $(document).mouseup(function(){
 
 $(document).ready(function() {
   $(this).scrollTop(0);
-
-  // API call
-  let url = 'https://global-warming.org/api/';
-
-  //temp, carbon, methane, nitruous, ice
-  apiCall("temp");
 })
 
 function loadChart(api_array,array_Type)
@@ -45,6 +39,8 @@ function loadChart(api_array,array_Type)
 
 function apiCall(apiLink)
 {
+  // API call
+  let url = 'https://global-warming.org/api/';
   if(apiLink == "temp")
   {
     url = url + "temperature-api";
