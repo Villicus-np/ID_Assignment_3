@@ -26,21 +26,15 @@ $(document).mouseup(function(){
 
 $(document).ready(function() {
   $(this).scrollTop(0);
+  let url = 'https://global-warming.org/api/';
 })
-
-function loadChart(api_array,array_Type)
-{
-  // Google Charts https://developers.google.com/chart/interactive/docs/gallery/linechart
-  google.charts.load('current', {packages: ['corechart', 'line']});
-  google.charts.setOnLoadCallback(function () {
-    drawChart(api_array,array_Type);
-  });
-}
+apiCall("carbon");
+apiCall("temp");
 
 function apiCall(apiLink)
 {
   // API call
-  let url = 'https://global-warming.org/api/';
+  url = 'https://global-warming.org/api/';
   if(apiLink == "temp")
   {
     url = url + "temperature-api";
@@ -53,15 +47,11 @@ function apiCall(apiLink)
   {
     url = url + "methane-api";
   }
-  else if (apiLink == "nitrous")
-  {
-    url = url + "nitrous-oxide-api";
-  }
   else if (apiLink == "ice")
   {
     url = url + "arctic-api";
   }
-
+  
   // Headers result[i] -> land,station,time
   fetch(url)
     .then(response => response.json()) 
@@ -74,9 +64,10 @@ function apiCall(apiLink)
 
 function apiData(data) 
 {
-
+  console.log(url);
   var data_array = [];
 
+  //Reminder to change the headers to suit it better
   if (url == 'https://global-warming.org/api/temperature-api')
   {
     // Headers: time,station
@@ -116,19 +107,6 @@ function apiData(data)
     }
     loadChart(data_array,"methane");
   }
-  else if (url == 'https://global-warming.org/api/nitrous-oxide-api')
-  {
-    // Headers: date,average
-    console.log("nitrous");
-    let result = data.nitrous;
-
-    for (var i = 0; i<result.length;i++)
-    {
-      var objarray = [i,Number(result[i].average)];
-      data_array.push(objarray);
-    }
-    loadChart(data_array,"nitrous");
-  }
   else if (url == 'https://global-warming.org/api/arctic-api')
   {
     // Headers: year,extend,area
@@ -144,30 +122,24 @@ function apiData(data)
   }
 }
 
-
 function drawChart(dataArr,array_Type) 
 {
   var data = new google.visualization.DataTable();
-  console.log(array_Type);
+  data.addColumn('number', 'X');
+
   if(array_Type == "temp")
   {
-    data.addColumn('number', 'X');
     data.addColumn('number', 'Temperature');
     
-    var options = {
-      hAxis: {
-        title: 'Year'
-      },
-      vAxis: {
-        title: 'Celsius'
-      }
-    };
+    var xAxis = "Year";
+    var yAxis = "Celsius"; 
   }
   else if (array_Type == "carbon")
   {
-    data.addColumn('number', 'X');
     data.addColumn('number', 'Carbon Dioxide');
     
+    var xAxis = "Year";
+    var yAxis = "Part Per million(ppm)"; 
     var options = {
       hAxis: {
         title: 'Year'
@@ -179,51 +151,66 @@ function drawChart(dataArr,array_Type)
   }
   else if (array_Type == "methane")
   {
-    data.addColumn('number', 'X');
     data.addColumn('number', 'Methane');
     
-    var options = {
-      hAxis: {
-        title: 'Year'
-      },
-      vAxis: {
-        title: 'CO2 Levels'
-      }
-    };
+    var xAxis = "Year";
+    var yAxis = "Part Per million(ppm)"; 
   }
-  else if (array_Type == "nitrous")
-  {
-    data.addColumn('number', 'X');
-    data.addColumn('number', 'Nitrous Oxide');
+  // else if (array_Type == "ice")
+  // {
+  //   data.addColumn('number', 'X');
+  //   data.addColumn('number', 'Extend');
+  //   data.addColumn('number', 'Area');
     
-    var options = {
-      hAxis: {
-        title: 'Year'
+  //   var options = {
+  //     hAxis: {
+  //       title: 'Year'
+  //     },
+  //     vAxis: {
+  //       title: 'Million Square km'
+  //     }
+  //   };
+  // }
+
+  var options = {
+    hAxis: {
+      title: xAxis,
+      textStyle: {
+        color: '#FFFFFF'
       },
-      vAxis: {
-        title: 'Nitrous Oxide mole fraction(ppb)'
+      titleTextStyle: {
+        color: '#FFFFFF'
       }
-    };
-  }
-  else if (array_Type == "ice")
-  {
-    data.addColumn('number', 'X');
-    data.addColumn('number', 'Extend');
-    data.addColumn('number', 'Area');
-    
-    var options = {
-      hAxis: {
-        title: 'Year'
+    },
+    vAxis: {
+      title: yAxis,
+      textStyle: {
+        color: '#FFFFFF'
       },
-      vAxis: {
-        title: 'Million Square km'
+      titleTextStyle: {
+        color: '#FFFFFF'
+      }        
+    },
+    backgroundColor: '#111111',
+    legend: {
+      textStyle: {
+        color: '#FFFFFF'
       }
-    };
-  }
+    }
+  };
   
   data.addRows(dataArr);
   
-  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  var chart = new google.visualization.LineChart(document.getElementById(array_Type));
   
   chart.draw(data, options);
+}
+
+function loadChart(api_array,array_Type)
+{
+  // Google Charts https://developers.google.com/chart/interactive/docs/gallery/linechart
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(function () {
+    drawChart(api_array,array_Type);
+  });
 }
