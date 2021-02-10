@@ -9,29 +9,28 @@ $(function () {
 
 // arrow down icon onclick scroll to tabs
 
-$('#scroll-icon').mousedown(function(){
-  timeout = setInterval(function(){
-      window.scrollBy(0,765);
+$('#scroll-icon').mousedown(function () {
+  timeout = setInterval(function () {
+    window.scrollBy(0, 765);
   }, 0);
 
   return false;
 });
 
-$(document).mouseup(function(){
+$(document).mouseup(function () {
   clearInterval(timeout);
   return false;
 });
 
 // force site to scroll to top on load
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(this).scrollTop(0);
   let url = 'https://global-warming.org/api/';
 })
-apiCall("temp");
+// apiCall("temp");
 
-function loadHideGraph(apiLink)
-{
+function loadHideGraph(apiLink) {
   var x = document.getElementById(apiLink + "Btn");
   var y = document.getElementById(apiLink);
   apiCall(apiLink);
@@ -44,150 +43,114 @@ function loadHideGraph(apiLink)
   }
 }
 
-function apiCall(apiLink)
-{
+function apiCall(apiLink) {
   // API call
   url = 'https://global-warming.org/api/';
-  if(apiLink == "temp")
-  {
+  if (apiLink == "temp") {
     url = url + "temperature-api";
   }
-  else if (apiLink == "carbon")
-  {
+  else if (apiLink == "carbon") {
     url = url + "co2-api";
   }
-  else if (apiLink == "methane")
-  {
+  else if (apiLink == "methane") {
     url = url + "methane-api";
   }
-  else if (apiLink == "ice")
-  {
+  else if (apiLink == "ice") {
     url = url + "arctic-api";
   }
-  
+
   // Headers result[i] -> land,station,time
   fetch(url)
-    .then(response => response.json()) 
+    .then(response => response.json())
     .then(apiData)
     .catch(err => {
       console.error(err);
     });
-    console.log();
+  console.log();
 }
 
-function apiData(data) 
-{
+function apiData(data) {
   console.log(url);
   var data_array = [];
 
   //Reminder to change the headers to suit it better
-  if (url == 'https://global-warming.org/api/temperature-api')
-  {
+  if (url == 'https://global-warming.org/api/temperature-api') {
     // Headers: time,station
     console.log("temp");
     let result = data.result;
 
-    for (var i = 0; i<result.length;i++)
-    {
-      var objarray = [Number(result[i].time),Number(result[i].station)];
+    for (var i = 0; i < result.length; i++) {
+      var objarray = [Number(result[i].time), Number(result[i].station)];
       data_array.push(objarray);
     }
-    loadChart(data_array,"temp");
+    loadChart(data_array, "temp");
   }
-  else if (url == 'https://global-warming.org/api/co2-api')
-  {
+  else if (url == 'https://global-warming.org/api/co2-api') {
     // Headers: year,month,day,trend
     console.log("co2");
     let result = data.co2;
 
-    for (var i = 0; i<result.length;i++)
-    {
-      var objarray = [i,Number(result[i].trend)];
+    for (var i = 0; i < result.length; i++) {
+      var objarray = [i, Number(result[i].trend)];
       data_array.push(objarray);
     }
-    loadChart(data_array,"carbon");
+    loadChart(data_array, "carbon");
   }
-  else if (url == 'https://global-warming.org/api/methane-api')
-  {
+  else if (url == 'https://global-warming.org/api/methane-api') {
     // Headers: date,average
     console.log("methane");
     let result = data.methane;
 
-    for (var i = 0; i<result.length;i++)
-    {
-      var objarray = [i,Number(result[i].average)];
+    for (var i = 0; i < result.length; i++) {
+      var objarray = [i, Number(result[i].average)];
       data_array.push(objarray);
     }
-    loadChart(data_array,"methane");
+    loadChart(data_array, "methane");
   }
-  else if (url == 'https://global-warming.org/api/arctic-api')
-  {
+  else if (url == 'https://global-warming.org/api/arctic-api') {
     // Headers: year,extend,area
     console.log("artic");
     let result = data.result;
-
-    for (var i = 0; i<result.length;i++)
-    {
-      var objarray = [i,Number(result[i].extend),Number(result[i].area)];
+    for (var i = 0; i < result.length; i++) {
+      var objarray = [i, result[i].extent, result[i].area];
       data_array.push(objarray);
     }
-    loadChart(data_array,"ice");
+    loadChart(data_array, "ice");
   }
 }
 
-function drawChart(dataArr,array_Type) 
-{
+function drawChart(dataArr, array_Type) {
   var data = new google.visualization.DataTable();
   data.addColumn('number', 'X');
 
-  if(array_Type == "temp")
-  {
+  if (array_Type == "temp") {
     data.addColumn('number', 'Temperature');
-    
-    var xAxis = "Year";
-    var yAxis = "Celsius"; 
+
+    var yAxis = "Celsius";
   }
-  else if (array_Type == "carbon")
-  {
+  else if (array_Type == "carbon") {
     data.addColumn('number', 'Carbon Dioxide');
-    
-    var xAxis = "Year";
-    var yAxis = "Part Per million(ppm)"; 
-    var options = {
-      hAxis: {
-        title: 'Year'
-      },
-      vAxis: {
-        title: 'Part Per million(ppm)'
-      }
-    };
+
+    var yAxis = "Part Per million(ppm)";
   }
-  else if (array_Type == "methane")
-  {
+  else if (array_Type == "methane") {
     data.addColumn('number', 'Methane');
-    
-    var xAxis = "Year";
-    var yAxis = "Part Per million(ppm)"; 
+
+    var yAxis = "Part Per million(ppm)";
   }
-  // else if (array_Type == "ice")
-  // {
-  //   data.addColumn('number', 'X');
-  //   data.addColumn('number', 'Extend');
-  //   data.addColumn('number', 'Area');
-    
-  //   var options = {
-  //     hAxis: {
-  //       title: 'Year'
-  //     },
-  //     vAxis: {
-  //       title: 'Million Square km'
-  //     }
-  //   };
-  // }
+  else if (array_Type == "ice") {
+    data.addColumn('number', 'Extend');
+    data.addColumn('number', 'Area');
+
+    var yAxis = "Million Square km";
+
+  }
+
+  data.addRows(dataArr);
 
   var options = {
     hAxis: {
-      title: xAxis,
+      title: 'Year',
       textStyle: {
         color: '#FFFFFF'
       },
@@ -202,7 +165,7 @@ function drawChart(dataArr,array_Type)
       },
       titleTextStyle: {
         color: '#FFFFFF'
-      }        
+      }
     },
     backgroundColor: '#111111',
     legend: {
@@ -211,19 +174,18 @@ function drawChart(dataArr,array_Type)
       }
     }
   };
-  
-  data.addRows(dataArr);
-  
+
+
   var chart = new google.visualization.LineChart(document.getElementById(array_Type));
-  
+
   chart.draw(data, options);
 }
 
-function loadChart(api_array,array_Type)
-{
+function loadChart(api_array, array_Type) {
   // Google Charts https://developers.google.com/chart/interactive/docs/gallery/linechart
-  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.load('current', { packages: ['corechart', 'line'] });
   google.charts.setOnLoadCallback(function () {
-    drawChart(api_array,array_Type);
+    drawChart(api_array, array_Type);
   });
 }
+
