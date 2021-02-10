@@ -112,7 +112,7 @@ function apiData(data) {
     console.log("artic");
     let result = data.result;
     for (var i = 0; i < result.length; i++) {
-      var objarray = [i, result[i].extent, result[i].area];
+      var objarray = [result[i].year, result[i].extent, result[i].area];
       data_array.push(objarray);
     }
     loadChart(data_array, "ice");
@@ -121,24 +121,28 @@ function apiData(data) {
 
 function drawChart(dataArr, array_Type) {
   var data = new google.visualization.DataTable();
-  data.addColumn('number', 'X');
+  
 
   if (array_Type == "temp") {
+    data.addColumn('number', 'X');
     data.addColumn('number', 'Temperature');
 
     var yAxis = "Celsius";
   }
   else if (array_Type == "carbon") {
+    data.addColumn('number', 'X');
     data.addColumn('number', 'Carbon Dioxide');
 
     var yAxis = "Part Per million(ppm)";
   }
   else if (array_Type == "methane") {
+    data.addColumn('number', 'X');
     data.addColumn('number', 'Methane');
 
     var yAxis = "Part Per million(ppm)";
   }
   else if (array_Type == "ice") {
+    data.addColumn('string', 'X');
     data.addColumn('number', 'Extend');
     data.addColumn('number', 'Area');
 
@@ -151,28 +155,28 @@ function drawChart(dataArr, array_Type) {
   var options = {
     hAxis: {
       title: 'Year',
-      textStyle: {
-        color: '#FFFFFF'
-      },
-      titleTextStyle: {
-        color: '#FFFFFF'
-      }
+      // textStyle: {
+      //   color: '#FFFFFF'
+      // },
+      // titleTextStyle: {
+      //   color: '#FFFFFF'
+      // }
     },
     vAxis: {
       title: yAxis,
-      textStyle: {
-        color: '#FFFFFF'
-      },
-      titleTextStyle: {
-        color: '#FFFFFF'
-      }
+      // textStyle: {
+      //   color: '#FFFFFF'
+      // },
+      // titleTextStyle: {
+      //   color: '#FFFFFF'
+      // }
     },
-    backgroundColor: '#111111',
-    legend: {
-      textStyle: {
-        color: '#FFFFFF'
-      }
-    }
+    // backgroundColor: '#111111',
+    // legend: {
+    //   textStyle: {
+    //     color: '#FFFFFF'
+    //   }
+    // }
   };
 
 
@@ -189,3 +193,4 @@ function loadChart(api_array, array_Type) {
   });
 }
 
+apiCall("ice");
