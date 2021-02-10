@@ -290,6 +290,43 @@
   color: white;
 }
 
+.global-temp-p2 {
+  display: flex;
+}
+
+.p2-img {
+  width: 100%;
+}
+
+.p2-img img {
+  width: 100%;
+}
+
+.carbon-p2 {
+  width: 100%;
+}
+
+.carbon-p2 img {
+  width: 100%;
+}
+
+.methane-p2-img {
+  width: 100%;
+  padding: 0 30px 0 0;
+}
+
+.methane-p2-img img {
+  width: 100%;
+}
+
+.ice-p1-img {
+  width: 100%;
+  padding: 0 0 0 30px;
+}
+
+.ice-p1-img img  {
+  width: 100%;
+}
 /* pollution.html */
 
 .page-holder {

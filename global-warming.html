@@ -26,8 +26,7 @@
     <!-- Preloader-->
     <div class="preloader">
         <div class="preloader-block">
-            <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span
-                    class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
+            <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
         </div>
     </div>
     <!-- Navbar-->
@@ -60,39 +59,128 @@
     </div>
 
     <!-- Content -->
+    <!-- adjust all the links into an unordered list for readability (eddie) -->
 
     <div class="container">
-        <div class="content-header" align="center">
-            <h1>Global Warming</h1>
+        <!-- Add content here (include your API whatsoever) -->
+        <div class="global-warming-overall">
+            <div class="content-header" align="center">
+                <h2 style="margin-bottom: 20px;">Global temperature anomalies from year 1 to present</h2>
+            </div>
+            <!-- Temperature Graph -->
+            <div id="temp-content" class="col-12">
+                <!-- <h3>Global Temperature Anomalies</h3> -->
+                <div id="temp"></div>
+                <button type="button" onclick="loadHideGraph('temp')" id="tempBtn">Hide Graph</button>
+                <p style="margin-bottom: 50px">Here we see the temperature anomalies that have happened.</p>
+            </div>
+
+            <div class="global-temp-content col-12" style="font-size: 16px; text-align: justify; margin-bottom: 100px;">
+                <div class="globlal-temp-p1">
+                    <p>The current global warming rate is not natural. From 1880 to 1981 was (0.07°C / 0.13°F) per decade. Since 1981 this rate has increased to (0.18°C / 0.32°F) <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">Climate Change: Global Temperature</a>.</p>
+                </div>
+                <br>
+                <div class="global-temp-p2 col-12" style="padding: 0;">
+                    <p class="col-6" style="padding: 0;">Some of the past sudden increase on global temperature present in this graph, correspond to the Roman Warm Period and the Medieval Warm Period. These events were at regional and not global scale.<a href="https://www.ipcc.ch/report/ar4/wg1/"> AR4 Climate Change 2007: The Physical Science Basis</a>. For more information about prehistoric temperature records please visit:<a href="https://www.ipcc.ch/site/assets/uploads/2018/02/WG1AR5_Chapter05_FINAL.pdf"> Information from Paleoclimate Archives </a>and <a href="https://earthobservatory.nasa.gov/features/GlobalWarming/page3.php">How is Today’s Warming Different from the Past?</a></p>
+
+                    <div class="p2-img col-6" style="padding: 0 0 0 30px"><img src="img/global-warming/global-warming-three.jpg" alt="global warming image beside paragraph two of about global warming"></div>
+                </div>
+                <br>
+                <div class="global-temp-p3">
+                    <p>The total average global temperature rise since the industrial revolution is around (1.0 °C / 1.8 °F). Earth northern hemisphere is warming faster. The arctic has warmed between (2 °C / 3.6 °F) and (4 °C / 7.2 °F). Please visit these scientific publications for more details: <a href="https://www.igsoc.org/annals/46/a46a005.pdf"> Recent air-temperature changes in the Arctic</a>, <a href="https://web.archive.org/web/20130628144322/http:/www.acia.uaf.edu/pages/scientific.html">ACIA Scientific Report</a>, <a href="https://www.climatecentral.org/news/in-global-warming-northern-hemisphere-is-outpacing-the-south-15850#:~:text=Berkeley%20and%20the%20University%20of,and%20oceans%20warm%20relatively%20slowly.">In Warming, Northern Hemisphere is Outpacing the South</a>, <a href="https://iopscience.iop.org/article/10.1088/1748-9326/aafc1b/pdf">Key indicators of Arctic climate change: 1971–2017</a>, <a href="https://nsidc.org/cryosphere/arctic-meteorology/climate_change.html">Climate Change in the Arctic</a>, <a href="https://www.nature.com/articles/s41467-019-09622-y">Recent summer warming in northwestern Canada exceeds the Holocene thermal maximum</a>.</p>
+                </div>
+                <hr>
+            </div>
         </div>
 
-        <!-- Add content here (include your API whatsoever) -->
-        <!-- Temperature Graph -->
-        <div id="temp-content">
-            <h1>Global Temperature Anomalies</h1>
-            <div id="temp"></div>
-            <button type="button" onclick="loadHideGraph('temp')" id="tempBtn">Hide Graph</button>
-            <p>Here we see the temperature anomalies that have happened.</p>
+        <div class="carbon-overall">
+            <!-- greenhouse gases graph -->
+            <div class="content-header" align="center">
+                <h2 style="margin-bottom: 20px;">Carbon Dioxide levels from 800,000 years ago to present</h2>
+            </div>
+            <div id="carbon-content" class="col-12">
+                <!-- <h2>Carbon Dioxide levels from 800,000 years ago to present</h2> -->
+                <div id="carbon"></div>
+                <button type="button" onclick="loadHideGraph('carbon')" id="carbonBtn">Load Graph</button>
+                <p style="margin-bottom: 50px;">Here we see the temperature anomalies that have happened.</p>
+            </div>
+
+            <div class="carbon-content col-12" style="font-size: 16px; text-align: justify; margin-bottom: 100px;">
+                <div class="carbon-p1">
+                    <p>For thousands of years, the natural concentration of CO2 in earth atmosphere was around 280 ppm. From the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock have increased this amount by more than 30%.</p>
+                </div>
+                <br>
+                <div class="carbon-p2">
+                    <img src="img/global-warming/global-warming-four.jpg" alt="global warming image at carbon content">
+                </div>
+                <br>
+                <div class="carbon-p3">
+                    <p>For more information about prehistoric CO2 concentration, current and future consequences please visit: <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide">Climate Change: Atmospheric Carbon Dioxide</a> and <a href="https://climate.nasa.gov/climate_resources/24/graphic-the-relentless-rise-of-carbon-dioxide/">The relentless rise of carbon dioxide</a>.</p>
+                </div>
+                <hr>
+            </div>
         </div>
-        <!-- greenhouse gases graph -->
-        <div id="carbon-content">
-            <h1>Carbon stuff</h1>
-            <div id="carbon"></div>
-            <button type="button" onclick="loadHideGraph('carbon')" id="carbonBtn">Load Graph</button>
-            <p>Here we see the temperature anomalies that have happened.</p>
+
+        <div class="methane-overall">
+            <!-- Methane Graph -->
+            <div class="content-header" align="center">
+                <h2 style="margin-bottom: 20px;">Methane levels from 800,000 years ago to present</h2>
+            </div>
+            <div id="methane-content" class="col-12">
+                <!-- <h1>Methane Stuff</h1> -->
+                <div id="methane"></div>
+                <button type="button" onclick="loadHideGraph('methane')" id="methaneBtn">Load Graph</button>
+                <p style="margin-bottom: 50px;">Here we see the temperature anomalies that have happened.</p>
+            </div>
+
+            <div class="methane-content col-12" style="font-size: 16px; text-align: justify; margin-bottom: 100px;">
+                <div class="methane-p1">
+                    <p>Methane is a flammable gas formed by geological and biological processes. Some of the natural ones are leaks from natural gas systems and wetlands.</p>
+                    <p>50-65% of total global methane emissions come from human activities. These include livestock, agriculture, energy and industry, waste from homes and businesses.</p>
+                </div>
+                <br>
+                <div class="methane-p2 col-12" style="padding: 0; display: flex;">
+                    <div class="methane-p2-img col-6"><img src="img/global-warming/global-warming-five.jpg" alt="global warming image beside paragraph two of methane gas"></div>
+                    <p class="col-6" style="padding: 0;">Methane is a gas with a global warming potential several times stronger than of CO2. For more than 650,000 years, methane concentration in the atmosphere was between 350 – 800 parts per billion (ppb). From the beginning of the industrial revolution, human activities have increased this amount by around 150%.</p>
+                </div>
+                <br>
+                <div class="methane-p3">
+                    <p>For more information about the methane situation please visit: <a href="https://www.epa.gov/ghgemissions/overview-greenhouse-gases#methane">EPA: Methane Emissions and NASA: Methane Emissions Continue to Rise</a>.</p>
+                </div>
+                <br>
+                <div class="methane-p4">
+                    <p>For more information about the prehistoric methane concentration, please visit: <a href="https://www.nature.com/articles/nature06950">Orbital and millennial-scale features of atmospheric CH4 over the past 800,000 years</a>.</p>
+                </div>
+                <hr>
+            </div>
         </div>
-        <div id="methane-content">
-            <h1>Methane Stuff</h1>
-            <div id="methane"></div>
-            <button type="button" onclick="loadHideGraph('methane')" id="methaneBtn">Load Graph</button>
-            <p>Here we see the temperature anomalies that have happened.</p>
-        </div>
-        <!-- Artic melting Graph -->
-        <div id="ice-content">
-            <h1>Artic Stuff</h1>
-            <div id="ice"></div>
-            <button type="button" onclick="loadHideGraph('ice')" id="iceBtn">Load Graph</button>
-            <p>Here we see the temperature anomalies that have happened.</p>
+
+        <div class="artic-overall">
+            <!-- Artic melting Graph -->
+            <div class="content-header" align="center">
+                <h2 style="margin-bottom: 20px;">Melted Polar Ice Caps</h2>
+            </div>
+            <div id="ice-content" class="col-12">
+                <!-- <h1>Artic Stuff</h1> -->
+                <div id="ice"></div>
+                <button type="button" onclick="loadHideGraph('ice')" id="iceBtn">Load Graph</button>
+                <p style="margin-bottom: 50px;">Here we see the temperature anomalies that have happened.</p>
+            </div>
+
+            <div class="ice-content col-12" style="font-size: 16px; text-align: justify; margin-bottom: 100px;">
+                <div class="ice-p1" style="display: flex;">
+                    <div class="ice-p1-text col-6" style="padding: 0;">
+                        <p>The arctic is warming around twice as fast as global average. Some of the reasons for this are: The arctic amplification, the albedo effect, and black carbon. From 1979 to 1996, we lost 2.2 – 3% of the arctic ice cover. From 2010 to present we are losing 12.85% per decade!</p>
+                        <br>
+                        <p>Another consequence is permafrost thawing, this is a process in which large amounts of methane is released to the atmosphere, fueling more the process of global warming.</p>
+                    </div>
+                    <div class="ice-p1-img col-6"><img src="img/global-warming/global-warming-six.jpg" alt="image beside paragraph one and two in artic ice content"></div>
+                </div>
+                <br>
+                <div class="ice-p3">
+                    <p>For details please visit: <a href="https://www.npolar.no/en/themes/climate-change-in-the-arctic/#toggle-id-8">Climate change in the Arctic</a> and <a href="https://www.igsoc.org/annals/46/a46a005.pdf">Recent air-temperature changes in the Arctic</a>.</p>
+                </div>
+            </div>
         </div>
     </div>
 
