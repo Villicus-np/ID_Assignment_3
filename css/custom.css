@@ -327,6 +327,19 @@
 .ice-p1-img img  {
   width: 100%;
 }
+
+.global-warming-btn {
+  width: 15%;
+  background: darkgrey;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.global-warming-btn:hover {
+  background: grey
+}
+
 /* pollution.html */
 
 .page-holder {
