@@ -27,6 +27,7 @@ $(document).mouseup(function () {
 $(document).ready(function () {
   $(this).scrollTop(0);
   let url = 'https://global-warming.org/api/';
+  InitMap()
 })
 // apiCall("temp");
 
@@ -283,43 +284,43 @@ apiCall("temp");
 // Creating questionss and answers
 //*****************************************************************************
 var question1 = {
-  question: "What does HTML stand for?",
-  answers: ["Hyper Text Markup Language", "HyperLinks and Text Markup Language", "Home Tool Markup Language"],
+  question: "What is global warming",
+  answers: ["It is the increase of temperature", "It is when we start to feel hot", "It is when the earth's core becoming hotter"],
   correct: 0
 };
 
 var question2 = {
-  question: "The Bootstrap grid system is based on how many columns?",
-  answers: ['6', '9', '12', '3'],
-  correct: 2
+  question: "Global Warming is harmful",
+  answers: ['True', 'False'],
+  correct: 0
 };
 
 var question3 = {
-  question: 'What does CSS stand for?',
-  answers: ['Colorful Style Sheets', 'Cascading Style Sheets', 'Creative Style Sheets', 'Computer Style Sheets'],
+  question: 'From the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock, how much carbon dioxide has the amount increased by?',
+  answers: ['50%', '30%', '10%', '25%'],
   correct: 1
 }
 
 var question4 = {
-  question: "Which property is used to change the background color?",
-  answers: ["bgcolor", "color", "background-color"],
+  question: "Since the industiral revolution how much has methane levels increased?",
+  answers: ["50%", "100%", "150%"],
   correct: 2
 };
 
 var question5 = {
-  question: "Javasctipt is the same as Java?",
-  answers: ["True", "False"],
+  question: "Why is Permafrost thawing bad?",
+  answers: ["It releases small amounts of methane to the atmoshpere", "It releases large amounts of methane to the atmoshpere", "It can injure sea creatures or humans if they are too close"],
   correct: 1
 };
 
 var question6 = {
-  question: "Which event occurs when the user clicks on an HTML element?",
-  answers: ["onchange", "onmouseclick", "onmouseover", "onclick"],
-  correct: 3
+  question: "All air pollutants are posionous.",
+  answers: ["True","False"],
+  correct: 1
 };
 
 var question7 = {
-  question: "Is JavaScript case-sensitive?",
+  question: "Air pollutions isn't always outside",
   answers: ["True", "False"],
   correct: 0
 };
@@ -663,18 +664,21 @@ function confettiEffect() {
 
 //-------- Pollution Map Code -------------//
 
-var map = new google.maps.Map(document.getElementById('map'), {
-  center: new google.maps.LatLng(1.3321, 103.7744),
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  zoom: 11
-});
-var t = new Date().getTime();
-var waqiMapOverlay = new google.maps.ImageMapType({
-  getTileUrl: function (coord, zoom) {
-    //Air quality map mode
-    // APi Reference: https://aqicn.org/faq/2015-09-18/map-web-service-real-time-air-quality-tile-api/
-    return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=aeed7ce91e18ff7ccd03b84a9c3a5c75c799d615";
-  },
-  name: "Air Quality",
-});
-map.overlayMapTypes.insertAt(0, waqiMapOverlay);
+function InitMap()
+{
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: new google.maps.LatLng(1.3321, 103.7744),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    zoom: 11
+  });
+  var t = new Date().getTime();
+  var waqiMapOverlay = new google.maps.ImageMapType({
+    getTileUrl: function (coord, zoom) {
+      //Air quality map mode
+      // APi Reference: https://aqicn.org/faq/2015-09-18/map-web-service-real-time-air-quality-tile-api/
+      return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=aeed7ce91e18ff7ccd03b84a9c3a5c75c799d615";
+    },
+    name: "Air Quality",
+  });
+  map.overlayMapTypes.insertAt(0, waqiMapOverlay);
+}
