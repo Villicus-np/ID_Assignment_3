@@ -280,8 +280,6 @@ function loadChart(api_array, array_Type) {
 apiCall("temp");
 
 //-------- Quiz JS Code -------------//
-
-
 // Creating questionss and answers
 //*****************************************************************************
 var question1 = {
@@ -346,7 +344,7 @@ var currentQuestion = questions[currentIndex];
 var prevousQuestion;
 var previousIndex = 0;
 
-var ulTag = document.getElementsByTagName('ul')[0];
+var ulTag = document.getElementById('answer');
 var button = document.getElementById('submit');
 var questionTitle = document.getElementById('question');
 
@@ -531,10 +529,10 @@ function confettiEffect() {
   //grabing area to create the effect
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
+  width = canvas.width = window.innerWidth - 20;
+  height = canvas.height = window.innerHeight + 560;
 
-  // creating the tabel
+  // creating the table
   particle = [];
   particleCount = 0,
     gravity = 0.3,
@@ -661,7 +659,6 @@ function confettiEffect() {
 
   }
 }
-
 
 
 //-------- Pollution Map Code -------------//
