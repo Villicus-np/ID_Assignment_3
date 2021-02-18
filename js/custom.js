@@ -176,112 +176,6 @@ function apiData(data) {
 
 //-------- Chart JS Code -------------//
 
-function drawChart(dataArr, array_Type) {
-  var data = new google.visualization.DataTable();
-
-
-  if (array_Type == "temp") {
-    data.addColumn('date', 'X');
-    data.addColumn('number', 'Temperature');
-
-    var yAxis = "Celsius";
-  }
-  else if (array_Type == "carbon") {
-    data.addColumn('date', 'X');
-    data.addColumn('number', 'Carbon Dioxide');
-
-    var yAxis = "Part Per million(ppm)";
-  }
-  else if (array_Type == "methane") {
-    data.addColumn('date', 'X');
-    data.addColumn('number', 'Methane');
-
-    var yAxis = "Part Per million(ppm)";
-  }
-  else if (array_Type == "ice") {
-    data.addColumn('date', 'X');
-    data.addColumn('number', 'Extend');
-    data.addColumn('number', 'Area');
-
-    var yAxis = "Million Square km";
-
-  }
-
-  data.addRows(dataArr);
-
-  var options = {
-    hAxis: {
-      title: 'Year',
-      textStyle: {
-        color: '#FFFFFF'
-      },
-      titleTextStyle: {
-        color: '#FFFFFF'
-      }
-    },
-    vAxis: {
-      title: yAxis,
-      textStyle: {
-        color: '#FFFFFF'
-      },
-      titleTextStyle: {
-        color: '#FFFFFF'
-      }
-    },
-    backgroundColor: '#111111',
-    legend: {
-      textStyle: {
-        color: '#FFFFFF'
-      }
-    },
-    colors: ['#a52714', '#097138']
-  };
-
-
-  var chart = new google.visualization.LineChart(document.getElementById(array_Type));
-
-  chart.draw(data, options);
-}
-
-function drawChartT(dataArr, array_Type) {
-  var data = new google.visualization.DataTable();
-  data.addColumn('date', 'X');
-  data.addColumn('number', 'Dogs');
-  data.addColumn('number', 'Cats');
-
-  // data.addRows([
-  //   [new Date(2000, 8),1],[new Date(2001, 8),1]
-  // ]);
-
-  data.addRows(dataArr);
-
-  var options = {
-    hAxis: {
-      title: 'Year'
-    },
-    vAxis: {
-      title: 'Popularity'
-    }//,
-    //colors: ['#a52714', '#097138']
-  };
-
-  var chart = new google.visualization.LineChart(document.getElementById(array_Type));
-  chart.draw(data, options);
-}
-
-function loadChart(api_array, array_Type) {
-  // Google Charts https://developers.google.com/chart/interactive/docs/gallery/linechart
-  google.charts.load('current', { packages: ['corechart', 'line'] });
-  google.charts.setOnLoadCallback(function () {
-    drawChart(api_array, array_Type);
-  });
-}
-
-apiCall("temp");
-
-//-------- Quiz JS Code -------------//
-
-
 // Creating questionss and answers
 //*****************************************************************************
 var question1 = {
@@ -316,7 +210,7 @@ var question5 = {
 
 var question6 = {
   question: "Which event occurs when the user clicks on an HTML element?",
-  answers: ["onchange", "onmouseclick", "onmouseover","onclick"],
+  answers: ["onchange", "onmouseclick", "onmouseover", "onclick"],
   correct: 3
 };
 
@@ -346,7 +240,7 @@ var currentQuestion = questions[currentIndex];
 var prevousQuestion;
 var previousIndex = 0;
 
-var ulTag = document.getElementsByTagName('ul')[0];
+var ulTag = document.getElementById('answer');
 var button = document.getElementById('submit');
 var questionTitle = document.getElementById('question');
 
@@ -357,72 +251,72 @@ var classHighlight = 'selected';
 
 // Display Answers and hightlight selected item
 //------------------------------------------------------------------
-function showQuestions (){
+function showQuestions() {
 
-if (currentIndex != 0) {
-// create again submit button only for next pages
-ulTag.innerHTML ='';
-button.innerHTML = 'Submit';
-button.className = 'submit';
-button.id = 'submit';
+  if (currentIndex != 0) {
+    // create again submit button only for next pages
+    ulTag.innerHTML = '';
+    button.innerHTML = 'Submit';
+    button.className = 'submit';
+    button.id = 'submit';
 
-//update the number of questions displayed
-document.getElementById('quizNumber').innerHTML = quizPage;
-}
+    //update the number of questions displayed
+    document.getElementById('quizNumber').innerHTML = quizPage;
+  }
 
-//Display Results in the final page
-if (currentIndex ==  (questions.length)) {
-ulTag.innerHTML = '';
-document.getElementById('question').innerHTML = '';
+  //Display Results in the final page
+  if (currentIndex == (questions.length)) {
+    ulTag.innerHTML = '';
+    document.getElementById('question').innerHTML = '';
 
-showResults();
+    showResults();
 
-return
-}
+    return
+  }
 
-questionTitle.innerHTML = currentQuestion.question;
-console.log(currentQuestion.question);
+  questionTitle.innerHTML = currentQuestion.question;
+  console.log(currentQuestion.question);
 
-// create a for loop to generate the answers and display them in the page
-for (var i = 0; i < currentQuestion.answers.length; i++) {
-// creating answers
-var newAns = document.createElement('li');
-newAns.id = 'ans'+ (i+1);
-newAns.className = "notSelected";
-var textAns = document.createTextNode(currentQuestion.answers[i]);
-newAns.appendChild(textAns);
-var addNewAnsHere = document.getElementById('answer');
-addNewAnsHere.appendChild(newAns);
+  // create a for loop to generate the answers and display them in the page
+  for (var i = 0; i < currentQuestion.answers.length; i++) {
+    // creating answers
+    var newAns = document.createElement('li');
+    newAns.id = 'ans' + (i + 1);
+    newAns.className = "notSelected";
+    var textAns = document.createTextNode(currentQuestion.answers[i]);
+    newAns.appendChild(textAns);
+    var addNewAnsHere = document.getElementById('answer');
+    addNewAnsHere.appendChild(newAns);
 
-console.log(currentQuestion.answers[i]);
-}
+    console.log(currentQuestion.answers[i]);
+  }
 
 
-//.click() will return the result of $('.notSelected')
-var $liTags = $('.notSelected').click(function(list) {
-list.preventDefault();
-//run removeClass on every element
-//if the elements are not static, you might want to rerun $('.notSelected')
-//instead of the saved $litTags
-$liTags.removeClass(classHighlight);
-//add the class to the currently clicked element (this)
-$(this).addClass(classHighlight);
+  //.click() will return the result of $('.notSelected')
+  var $liTags = $('.notSelected').click(function (list) {
+    list.preventDefault();
+    //run removeClass on every element
+    //if the elements are not static, you might want to rerun $('.notSelected')
+    //instead of the saved $litTags
+    $liTags.removeClass(classHighlight);
+    //add the class to the currently clicked element (this)
+    $(this).addClass(classHighlight);
 
-//get id name of clicked answer
-for (var i = 0; i < currentQuestion.answers.length ; i++) {
-// console.log(liTagsid[i]);
-if($liTags[i].className == "notSelected selected"){
-//store information to check answer
-tags = $liTags[i].id;
-// tagsClass = $LiTags.className;
-console.log(tags);
-tagsClassName = $liTags[i];
-}
-}
-});
+    //get id name of clicked answer
+    for (var i = 0; i < currentQuestion.answers.length; i++) {
+      // console.log(liTagsid[i]);
+      if ($liTags[i].className == "notSelected selected") {
+        //store information to check answer
+        tags = $liTags[i].id;
+        // tagsClass = $LiTags.className;
+        console.log(tags);
+        tagsClassName = $liTags[i];
+      }
+    }
+  });
 
-//check answer once it has been submitted
-button.onclick = function (){ checkAnswer()};
+  //check answer once it has been submitted
+  button.onclick = function () { checkAnswer() };
 }
 
 //self calling function
@@ -431,235 +325,235 @@ showQuestions();
 
 // Show Correct Answer
 //------------------------------------------------------------------
-function checkAnswer (){
-// get selected list
-var selectedItem = document.getElementById(tags);
+function checkAnswer() {
+  // get selected list
+  var selectedItem = document.getElementById(tags);
 
-// check that an answer has been selected
-if (selectedItem == undefined) {
-alert("Please selected an answer!")
-return
-} else {
-// get user answer if form of text
-var userAns = selectedItem.innerHTML;
-}
+  // check that an answer has been selected
+  if (selectedItem == undefined) {
+    alert("Please selected an answer!")
+    return
+  } else {
+    // get user answer if form of text
+    var userAns = selectedItem.innerHTML;
+  }
 
-// change the background of the answer according to the Results
-if (userAns == currentQuestion.answers[currentQuestion.correct]) {
-console.log("Correct! The answer is: "+ userAns);
-// change color of selected item by changing className
-selectedItem.className = 'correct';
-// count the number of correct answers
-correctAns++;
-console.log(correctAns);
-} else {
-console.log("Wrong! The corrent answer is: "+  currentQuestion.answers[currentQuestion.correct]);
-//change the background of the wrong answer
-selectedItem.className = 'wrong';
-//hightlight the right answer if the user got it wrong
-//change the class name of the correct answer
-ulTag.getElementsByTagName('li')[currentQuestion.correct].className = 'correct';
+  // change the background of the answer according to the Results
+  if (userAns == currentQuestion.answers[currentQuestion.correct]) {
+    console.log("Correct! The answer is: " + userAns);
+    // change color of selected item by changing className
+    selectedItem.className = 'correct';
+    // count the number of correct answers
+    correctAns++;
+    console.log(correctAns);
+  } else {
+    console.log("Wrong! The corrent answer is: " + currentQuestion.answers[currentQuestion.correct]);
+    //change the background of the wrong answer
+    selectedItem.className = 'wrong';
+    //hightlight the right answer if the user got it wrong
+    //change the class name of the correct answer
+    ulTag.getElementsByTagName('li')[currentQuestion.correct].className = 'correct';
 
-console.log(currentQuestion.answers[currentQuestion.correct]);
-}
+    console.log(currentQuestion.answers[currentQuestion.correct]);
+  }
 
-// Create a next Question button once the answer has been submitted
-button.innerHTML = 'Next Question';
-button.className = 'next';
-button.id = 'next';
+  // Create a next Question button once the answer has been submitted
+  button.innerHTML = 'Next Question';
+  button.className = 'next';
+  button.id = 'next';
 
-prevousQuestion = currentQuestion;
-quizPage++;
-currentIndex++;
-currentQuestion = questions[currentIndex];
+  prevousQuestion = currentQuestion;
+  quizPage++;
+  currentIndex++;
+  currentQuestion = questions[currentIndex];
 
-// Start with the next question once the "Next" button has been clicked
-button.onclick = function (){showQuestions()};
-return
+  // Start with the next question once the "Next" button has been clicked
+  button.onclick = function () { showQuestions() };
+  return
 }
 
 // Final score
 //------------------------------------------------------------------
-function showResults () {
-//deleting page number
-document.getElementById('pages').innerHTML='';
+function showResults() {
+  //deleting page number
+  document.getElementById('pages').innerHTML = '';
 
-// Change Title
-questionTitle.innerHTML = '<h1>Your Score</h1>';
+  // Change Title
+  questionTitle.innerHTML = '<h1>Your Score</h1>';
 
-// Get the area that will be used to display the user's score
-var newInfo = document.getElementById('quiz-results');
-//Change the id and className of the area for the circle
-newInfo.innerHTML = '';
-newInfo.id = 'circle';
-newInfo.className = 'circle';
+  // Get the area that will be used to display the user's score
+  var newInfo = document.getElementById('quiz-results');
+  //Change the id and className of the area for the circle
+  newInfo.innerHTML = '';
+  newInfo.id = 'circle';
+  newInfo.className = 'circle';
 
 
-//Create a Div for the fill element
-var newDiv = document.createElement('div');
-newDiv.className = 'fill';
-var addHere = document.getElementById('circle');
-addHere.appendChild(newDiv);
+  //Create a Div for the fill element
+  var newDiv = document.createElement('div');
+  newDiv.className = 'fill';
+  var addHere = document.getElementById('circle');
+  addHere.appendChild(newDiv);
 
-// add the score to the circle
-var newScore = document.createElement('h3');
-newScore.className = 'score';
-var textScore = document.createTextNode(Math.floor((correctAns/questions.length)*100) + '%');
-newScore.appendChild(textScore);
-addHere.appendChild(newScore);
+  // add the score to the circle
+  var newScore = document.createElement('h3');
+  newScore.className = 'score';
+  var textScore = document.createTextNode(Math.floor((correctAns / questions.length) * 100) + '%');
+  newScore.appendChild(textScore);
+  addHere.appendChild(newScore);
 
-//use jquary to grab the text of the score
-var score = $(".score").text();
+  //use jquary to grab the text of the score
+  var score = $(".score").text();
 
-//fill the circle in base of the score
-$(".fill").css("height",score);
+  //fill the circle in base of the score
+  $(".fill").css("height", score);
 
-if (correctAns >= 5) {
-var newCongrats = document.createElement('p');
-var textCongrats = document.createTextNode('Congratulations! You did a Good Job!')
-newCongrats.appendChild(textCongrats);
-document.getElementById('display-area').appendChild(newCongrats);
+  if (correctAns >= 5) {
+    var newCongrats = document.createElement('p');
+    var textCongrats = document.createTextNode('Congratulations! You did a Good Job!' + window.innerWidth + "," +window.innerHeight)
+    newCongrats.appendChild(textCongrats);
+    document.getElementById('display-area').appendChild(newCongrats);
 
-confettiEffect();
-}
+    confettiEffect();
+  }
 
 }
 
 // Confetti Effect by Gtibo "Confetti Party"
 //------------------------------------------------------------------
-function confettiEffect (){
-//grabing area to create the effect
-canvas = document.getElementById("canvas");
-context = canvas.getContext("2d");
-width = canvas.width = window.innerWidth;
-height = canvas.height = window.innerHeight;
+function confettiEffect() {
+  //grabing area to create the effect
+  canvas = document.getElementById("canvas");
+  context = canvas.getContext("2d");
+  width = canvas.width = window.innerWidth - 20;
+  height = canvas.height = window.innerHeight + 560;
 
-// creating the tabel
-particle = [];
-particleCount = 0,
-gravity = 0.3,
-colors = [
-'#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5',
-'#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50',
-'#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800',
-'#FF5722', '#795548'
-];
+  // creating the table
+  particle = [];
+  particleCount = 0,
+    gravity = 0.3,
+    colors = [
+      '#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5',
+      '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50',
+      '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800',
+      '#FF5722', '#795548'
+    ];
 
-for( var i = 0; i < 300; i++){
+  for (var i = 0; i < 300; i++) {
 
-particle.push({
-x : width/2,
-y : height/2,
-boxW : randomRange(5,20),
-boxH : randomRange(5,20),
-size : randomRange(2,8),
+    particle.push({
+      x: width / 2,
+      y: height / 2,
+      boxW: randomRange(5, 20),
+      boxH: randomRange(5, 20),
+      size: randomRange(2, 8),
 
-spikeran:randomRange(3,5),
+      spikeran: randomRange(3, 5),
 
-velX :randomRange(-8,8),
-velY :randomRange(-50,-10),
+      velX: randomRange(-8, 8),
+      velY: randomRange(-50, -10),
 
-angle :convertToRadians(randomRange(0,360)),
-color:colors[Math.floor(Math.random() * colors.length)],
-anglespin:randomRange(-0.2,0.2),
+      angle: convertToRadians(randomRange(0, 360)),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      anglespin: randomRange(-0.2, 0.2),
 
-draw : function(){
-context.save();
-context.translate(this.x,this.y);
-context.rotate(this.angle);
-context.fillStyle=this.color;
-context.beginPath();
+      draw: function () {
+        context.save();
+        context.translate(this.x, this.y);
+        context.rotate(this.angle);
+        context.fillStyle = this.color;
+        context.beginPath();
 
-context.fillRect(this.boxW/2*-1,this.boxH/2*-1,this.boxW,this.boxH);
-context.fill();
-context.closePath();
-context.restore();
-this.angle += this.anglespin;
-this.velY*= 0.999;
-this.velY += 0.3;
+        context.fillRect(this.boxW / 2 * -1, this.boxH / 2 * -1, this.boxW, this.boxH);
+        context.fill();
+        context.closePath();
+        context.restore();
+        this.angle += this.anglespin;
+        this.velY *= 0.999;
+        this.velY += 0.3;
 
-this.x += this.velX;
-this.y += this.velY;
+        this.x += this.velX;
+        this.y += this.velY;
 
-if(this.y < 0){
-this.velY *= -0.2;
-this.velX *= 0.9;
-};
+        if (this.y < 0) {
+          this.velY *= -0.2;
+          this.velX *= 0.9;
+        };
 
-if(this.y > height){
-this.anglespin = 0;
-this.y = height;
-this.velY *= -0.2;
-this.velX *= 0.9;
-};
+        if (this.y > height) {
+          this.anglespin = 0;
+          this.y = height;
+          this.velY *= -0.2;
+          this.velX *= 0.9;
+        };
 
-if(this.x > width ||this.x< 0){
-this.velX *= -0.5;
-};
-},
-});
-}
+        if (this.x > width || this.x < 0) {
+          this.velX *= -0.5;
+        };
+      },
+    });
+  }
 
-function drawScreen(){
-context.globalAlpha = 1;
-for( var i = 0; i < particle.length; i++){
-particle[i].draw();
-}
-}
+  function drawScreen() {
+    context.globalAlpha = 1;
+    for (var i = 0; i < particle.length; i++) {
+      particle[i].draw();
+    }
+  }
 
-function loadImage(url){
-var img = document.createElement("img");
-img.src=url;
-return img;
-}
+  function loadImage(url) {
+    var img = document.createElement("img");
+    img.src = url;
+    return img;
+  }
 
-function update(){
-context.clearRect(0,0,width,height);
-drawScreen();
-requestAnimationFrame(update);
-}
+  function update() {
+    context.clearRect(0, 0, width, height);
+    drawScreen();
+    requestAnimationFrame(update);
+  }
 
-update();
+  update();
 
-function randomRange(min, max){
-return min + Math.random() * (max - min );
-}
+  function randomRange(min, max) {
+    return min + Math.random() * (max - min);
+  }
 
-function randomInt(min, max){
-return Math.floor(min + Math.random()* (max - min + 1));
-}
+  function randomInt(min, max) {
+    return Math.floor(min + Math.random() * (max - min + 1));
+  }
 
-function convertToRadians(degree) {
-return degree*(Math.PI/180);
-}
+  function convertToRadians(degree) {
+    return degree * (Math.PI / 180);
+  }
 
-function drawStar(cx, cy, spikes, outerRadius, innerRadius,color) {
-var rot = Math.PI / 2 * 3;
-var x = cx;
-var y = cy;
-var step = Math.PI / spikes;
+  function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
+    var rot = Math.PI / 2 * 3;
+    var x = cx;
+    var y = cy;
+    var step = Math.PI / spikes;
 
-context.strokeSyle = "#000";
-context.beginPath();
-context.moveTo(cx, cy - outerRadius)
-for (i = 0; i < spikes; i++) {
-x = cx + Math.cos(rot) * outerRadius;
-y = cy + Math.sin(rot) * outerRadius;
-context.lineTo(x, y)
-rot += step
+    context.strokeSyle = "#000";
+    context.beginPath();
+    context.moveTo(cx, cy - outerRadius)
+    for (i = 0; i < spikes; i++) {
+      x = cx + Math.cos(rot) * outerRadius;
+      y = cy + Math.sin(rot) * outerRadius;
+      context.lineTo(x, y)
+      rot += step
 
-x = cx + Math.cos(rot) * innerRadius;
-y = cy + Math.sin(rot) * innerRadius;
-context.lineTo(x, y)
-rot += step
-}
+      x = cx + Math.cos(rot) * innerRadius;
+      y = cy + Math.sin(rot) * innerRadius;
+      context.lineTo(x, y)
+      rot += step
+    }
 
-context.lineTo(cx, cy - outerRadius)
-context.closePath();
-context.fillStyle = color;
-context.fill();
+    context.lineTo(cx, cy - outerRadius)
+    context.closePath();
+    context.fillStyle = color;
+    context.fill();
 
-}
+  }
 }
 
 
