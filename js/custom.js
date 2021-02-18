@@ -293,43 +293,51 @@ apiCall("temp");
 
 //-------- Quiz JS Code -------------//
 
-var qnsArray = ["What makes the world hotter", "For what reason do i live here", "Which one is correct?", "What do you suffer for."];
-var quizDiv = document.getElementById('quiz_qns');
-for (var i = 0; i < qnsArray.length; i++) {
-  // quizDiv.append(qnsArray[i]);
-}
+
 
 // pos is position of where the user in the test or which question they're up to
-var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct = 0;
 // this is a multidimensional array with 4 inner array elements with 5 elements inside them
 var questions = [
   {
-    question: "What is 36 + 42",
-    a: "64",
-    b: "78",
-    c: "76",
+    question: "What makes the world hotter",
+    a: "Littering",
+    b: "Greenhouse gases",
+    c: "Cooking",
+    d: "Global warming",
+    answer: "D"
+  },
+  {
+    question: "Why is the ice cap melting so fast",
+    a: "We keep taking the ice away",
+    b: "The increased of global temperatures makes the ice melt more then it can freeze",
+    c: "We are teraforming the planet",
+    d: "This is natures doing",
     answer: "B"
   },
   {
-    question: "What is 7 x 4?",
-    a: "21",
-    b: "27",
-    c: "28",
+    question: "Which one is correct?",
+    a: "Greenhouse gases help us",
+    b: "We can do nothing to stop the increase in temperature",
+    c: "Animals help decrease the global temperature",
+    d: "Every year the global temperature is slowly increasing",
+    answer: "D"
+  },
+  {
+    question: "Which pollutions will affect our air",
+    a: "Air pollution",
+    b: "Land Pollution",
+    c: "All of the above",
+    d: "Water pollution",
     answer: "C"
   },
   {
-    question: "What is 16 / 4?",
-    a: "4",
-    b: "6",
-    c: "3",
+    question: "What is extend",
+    a: "It is the surface area which is covered in ice",
+    b: "It is the area which is covered in ice",
+    c: "It is the extent of how big the ice is",
+    d: "It is a measurement of how far the ice extends for",
     answer: "A"
-  },
-  {
-    question: "What is 8 x 12?",
-    a: "88",
-    b: "112",
-    c: "96",
-    answer: "C"
   }
 ];
 // this get function is short for the getElementById function  
@@ -341,6 +349,15 @@ function renderQuestion() {
   test = get("test");
   if (pos >= questions.length) {
     test.innerHTML = "<h2>You got " + correct + " of " + questions.length + " questions correct</h2>";
+    if(correct < 3)
+    {
+      test_animation.innerHTML =  '<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_WUEvZP.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"    autoplay></lottie-player>';
+    }
+    else
+    {
+      test_animation.innerHTML = '<lottie-player src="https://assets8.lottiefiles.com/datafiles/zWCwScboaLCVrzc/data.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"    autoplay></lottie-player>';
+    }
+    
     get("test_status").innerHTML = "Test completed";
     // resets the variable to allow users to restart the test
     pos = 0;
@@ -354,13 +371,15 @@ function renderQuestion() {
   chA = questions[pos].a;
   chB = questions[pos].b;
   chC = questions[pos].c;
+  chD = questions[pos].d;
   // display the question
   test.innerHTML = "<h3>" + question + "</h3>";
   // display the answer options
   // the += appends to the data we started on the line above
   test.innerHTML += "<label> <input type='radio' name='choices' value='A'> " + chA + "</label><br>";
   test.innerHTML += "<label> <input type='radio' name='choices' value='B'> " + chB + "</label><br>";
-  test.innerHTML += "<label> <input type='radio' name='choices' value='C'> " + chC + "</label><br><br>";
+  test.innerHTML += "<label> <input type='radio' name='choices' value='C'> " + chC + "</label><br>";
+  test.innerHTML += "<label> <input type='radio' name='choices' value='D'> " + chD + "</label><br><br>";
   test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
 }
 function checkAnswer() {
