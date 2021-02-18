@@ -366,6 +366,14 @@
   color: white;
 }
 
+.pollution-p1-img {
+  width: 100%;
+}
+
+.pollution-p1-img img {
+  width: 100%;
+}
+
 /* quiz.html */
 
 .page-holder {
