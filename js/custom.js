@@ -383,3 +383,22 @@ function checkAnswer() {
 }
 // Add event listener to call renderQuestion on page load event
 window.addEventListener("load", renderQuestion);
+
+
+//-------- Pollution Map Code -------------//
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: new google.maps.LatLng(1.3321, 103.7744),
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  zoom: 11
+});
+var t = new Date().getTime();
+var waqiMapOverlay = new google.maps.ImageMapType({
+  getTileUrl: function (coord, zoom) {
+    //Air quality map mode
+    // APi Reference: https://aqicn.org/faq/2015-09-18/map-web-service-real-time-air-quality-tile-api/
+    return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=aeed7ce91e18ff7ccd03b84a9c3a5c75c799d615";
+  },
+  name: "Air Quality",
+});
+map.overlayMapTypes.insertAt(0, waqiMapOverlay);
