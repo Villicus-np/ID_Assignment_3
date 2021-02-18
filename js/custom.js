@@ -85,56 +85,44 @@ function apiData(data) {
       var t = result[i].time;
       var year = t.substr(0, t.lastIndexOf("."));
       var month = t.substring(t.indexOf(".") + 1);
-      if (month == "04")
-      {
+      if (month == "04") {
         month = 1;
       }
-      else if (month == "13")
-      {
+      else if (month == "13") {
         month = 2;
       }
-      else if (month == "21")
-      {
+      else if (month == "21") {
         month = 3;
       }
-      else if (month == "29")
-      {
+      else if (month == "29") {
         month = 4;
       }
-      else if (month == "38")
-      {
+      else if (month == "38") {
         month = 5;
       }
-      else if (month == "46")
-      {
+      else if (month == "46") {
         month = 6;
       }
-      else if (month == "54")
-      {
+      else if (month == "54") {
         month = 7;
       }
-      else if (month == "63")
-      {
+      else if (month == "63") {
         month = 8;
       }
-      else if (month == "71")
-      {
+      else if (month == "71") {
         month = 9;
       }
-      else if (month == "79")
-      {
+      else if (month == "79") {
         month = 10;
       }
-      else if (month == "88")
-      {
+      else if (month == "88") {
         month = 11;
       }
-      else if (month == "96")
-      {
+      else if (month == "96") {
         month = 12;
       }
-      
-      var objarray = [new Date(year,month), Number(result[i].station)];
+
+      var objarray = [new Date(year, month), Number(result[i].station)];
       data_array.push(objarray);
     }
     console.log(data_array)
@@ -153,7 +141,7 @@ function apiData(data) {
       var objarray = [new Date(years, month, date), Number(result[i].trend)];
       data_array.push(objarray);
     }
-    
+
     loadChart(data_array, "carbon");
   }
   else if (url == 'https://global-warming.org/api/methane-api') {
@@ -179,7 +167,7 @@ function apiData(data) {
 
     console.log(result);
     for (var i = 0; i < result.length; i++) {
-      var objarray = [new Date(result[i].year,0), result[i].extent, result[i].area];
+      var objarray = [new Date(result[i].year, 0), result[i].extent, result[i].area];
       data_array.push(objarray);
     }
     loadChart(data_array, "ice");
@@ -349,15 +337,13 @@ function renderQuestion() {
   test = get("test");
   if (pos >= questions.length) {
     test.innerHTML = "<h2>You got " + correct + " of " + questions.length + " questions correct</h2>";
-    if(correct < 3)
-    {
-      test_animation.innerHTML =  '<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_WUEvZP.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"    autoplay></lottie-player>';
+    if (correct < 3) {
+      test_animation.innerHTML = '<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_WUEvZP.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"    autoplay></lottie-player>';
     }
-    else
-    {
+    else {
       test_animation.innerHTML = '<lottie-player src="https://assets8.lottiefiles.com/datafiles/zWCwScboaLCVrzc/data.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"    autoplay></lottie-player>';
     }
-    
+
     get("test_status").innerHTML = "Test completed";
     // resets the variable to allow users to restart the test
     pos = 0;
@@ -402,3 +388,20 @@ function checkAnswer() {
 }
 // Add event listener to call renderQuestion on page load event
 window.addEventListener("load", renderQuestion);
+
+
+//-------- Pollution Map Code -------------//
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: new google.maps.LatLng(51.505, -0.09),
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  zoom: 11
+});
+var t = new Date().getTime();
+var waqiMapOverlay = new google.maps.ImageMapType({
+  getTileUrl: function (coord, zoom) {
+    return 'https://tiles.aqicn.org/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=aeed7ce91e18ff7ccd03b84a9c3a5c75c799d615";
+  },
+  name: "Air Quality",
+});
+map.overlayMapTypes.insertAt(0, waqiMapOverlay);
