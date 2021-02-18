@@ -42,10 +42,26 @@
   </div>
 
   <div id="quiz">
-    <h1>Quiz Stuff</h1>
-    <h2 id="test_status"></h2>
-    <div id="test"></div>
-    <div id="test_animation"></div>
+    <div class="main">
+      <!-- Number of Question  -->
+      <div class="wrapper" id="pages">
+        <span id="quizNumber">1</span><span>/7</span>
+      </div>
+
+      <!-- Quiz Question -->
+      <div class="quiz-questions" id="display-area">
+        <p id="question"></p>
+        <ul id="answer">
+        </ul>
+
+        <div id="quiz-results">
+          <button type="button" name="button" class="submit" id="submit">Submit</button>
+        </div>
+      </div>
+
+    </div>
+
+    <canvas id="canvas"></canvas>
   </div>
   <h1>Pollution Map</h1>
   <div id='map' style='height:380px;'></div>
