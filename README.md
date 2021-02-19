@@ -62,6 +62,8 @@ Lottie Animations: https://lottiefiles.com/
 Global Warming content: https://global-warming.org/api/  
 Pollution content: https://medlineplus.gov/airpollution.html#:~:text=Air%20pollution%20is%20a%20mixture,may%20be%20suspended%20as%20particles.&text=When%20ozone%20forms%20air%20pollution,Some%20air%20pollutants%20are%20poisonous.
 
+## Pitch link:
+https://drive.google.com/file/d/17et9QMH21xScrBNdJIdoG8-DbMXljt0Y/view?usp=sharing
 
 ## Website link:
 https://villicus-np.github.io/ID_Assignment_3/
