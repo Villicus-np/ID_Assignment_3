@@ -40,9 +40,9 @@ function loadHideGraph(apiLink) {
     y.style.display = "none";
   } else {
     x.innerHTML = "Hide Graph";
-    y.style.alignItems = "center";// Aligning to center does not work
+    y.style.justifyContent = "center";
     y.innerHTML = '<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_Stt1R6.json"  background="transparent"  speed="0.8"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>';
-    y.style.display = "block";
+    y.style.display = "flex";
   }
 }
 
