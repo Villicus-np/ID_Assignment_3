@@ -43,9 +43,9 @@ We gave our user 1 scenario to test the website and these are the following info
 
 1. User Scenario
   i. Go to "Quiz" page  
-  ii. Take the quiz. 
-  iii. Get 5 or more questions correct. Confetti will be shown.
-  iv. Get less than 5 questiosn correct, no confetti will be shown.
+  ii. Take the quiz.  
+  iii. Get 5 or more questions correct. Confetti will be shown.  
+  iv. Get less than 5 questiosn correct, no confetti will be shown.  
   
   
   
