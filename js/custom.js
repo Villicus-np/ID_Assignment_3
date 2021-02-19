@@ -27,8 +27,8 @@ $(document).mouseup(function () {
 $(document).ready(function () {
   $(this).scrollTop(0);
   let url = 'https://global-warming.org/api/';
-  InitMap()
-})
+  InitMap();
+});
 // apiCall("temp");
 
 function loadHideGraph(apiLink) {
@@ -128,7 +128,6 @@ function apiData(data) {
       var objarray = [new Date(year, month), Number(result[i].station)];
       data_array.push(objarray);
     }
-    console.log(data_array)
     loadChart(data_array, "temp");
   }
   else if (url == 'https://global-warming.org/api/co2-api') {
@@ -160,7 +159,6 @@ function apiData(data) {
       var objarray = [new Date(year, month), Number(result[i].average)];
       data_array.push(objarray);
     }
-    console.log(result)
     loadChart(data_array, "methane");
   }
   else if (url == 'https://global-warming.org/api/arctic-api') {
@@ -301,7 +299,7 @@ var question3 = {
   question: 'From the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock, how much carbon dioxide has the amount increased by?',
   answers: ['50%', '30%', '10%', '25%'],
   correct: 1
-}
+};
 
 var question4 = {
   question: "Since the industrial revolution how much has methane levels increased?",
@@ -317,7 +315,7 @@ var question5 = {
 
 var question6 = {
   question: "All air pollutants are poisonous.",
-  answers: ["True","False"],
+  answers: ["True", "False"],
   correct: 1
 };
 
@@ -378,7 +376,7 @@ function showQuestions() {
 
     showResults();
 
-    return
+    return;
   }
 
   questionTitle.innerHTML = currentQuestion.question;
@@ -423,7 +421,7 @@ function showQuestions() {
   });
 
   //check answer once it has been submitted
-  button.onclick = function () { checkAnswer() };
+  button.onclick = function () { checkAnswer(); };
 }
 
 //self calling function
@@ -438,8 +436,8 @@ function checkAnswer() {
 
   // check that an answer has been selected
   if (selectedItem == undefined) {
-    alert("Please selected an answer!")
-    return
+    alert("Please selected an answer!");
+    return;
   } else {
     // get user answer if form of text
     var userAns = selectedItem.innerHTML;
@@ -475,8 +473,8 @@ function checkAnswer() {
   currentQuestion = questions[currentIndex];
 
   // Start with the next question once the "Next" button has been clicked
-  button.onclick = function () { showQuestions() };
-  return
+  button.onclick = function () { showQuestions(); };
+  return;
 }
 
 // Final score
@@ -517,7 +515,7 @@ function showResults() {
 
   if (correctAns >= 5) {
     var newCongrats = document.createElement('p');
-    var textCongrats = document.createTextNode('Congratulations! You did a Good Job!')
+    var textCongrats = document.createTextNode('Congratulations! You did a Good Job!');
     newCongrats.appendChild(textCongrats);
     document.getElementById('display-area').appendChild(newCongrats);
 
@@ -585,19 +583,19 @@ function confettiEffect() {
         if (this.y < 0) {
           this.velY *= -0.2;
           this.velX *= 0.9;
-        };
+        }
 
         if (this.y > height) {
           this.anglespin = 0;
           this.y = height;
           this.velY *= -0.2;
           this.velX *= 0.9;
-        };
+        }
 
         if (this.x > width || this.x < 0) {
           this.velX *= -0.5;
-        };
-      },
+        }
+      }
     });
   }
 
@@ -642,20 +640,20 @@ function confettiEffect() {
 
     context.strokeSyle = "#000";
     context.beginPath();
-    context.moveTo(cx, cy - outerRadius)
+    context.moveTo(cx, cy - outerRadius);
     for (i = 0; i < spikes; i++) {
       x = cx + Math.cos(rot) * outerRadius;
       y = cy + Math.sin(rot) * outerRadius;
-      context.lineTo(x, y)
-      rot += step
+      context.lineTo(x, y);
+      rot += step;
 
       x = cx + Math.cos(rot) * innerRadius;
       y = cy + Math.sin(rot) * innerRadius;
-      context.lineTo(x, y)
-      rot += step
+      context.lineTo(x, y);
+      rot += step;
     }
 
-    context.lineTo(cx, cy - outerRadius)
+    context.lineTo(cx, cy - outerRadius);
     context.closePath();
     context.fillStyle = color;
     context.fill();
@@ -666,8 +664,7 @@ function confettiEffect() {
 
 //-------- Pollution Map Code -------------//
 
-function InitMap()
-{
+function InitMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: new google.maps.LatLng(1.3321, 103.7744),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
