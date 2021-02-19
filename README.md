@@ -42,14 +42,12 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 We gave our user 1 scenario to test the website and these are the following information that we have collected in the test process.
 
 1. User Scenario
-  i. Go to "Global Warming" page without using the navigation bar.  
-  ii. Load the graphs  
-  iii. Briefly read through the content  
-  iv. Go to "Pollution" page  
-  v. Briefly read through the content  
-  vi. Understand the Map in "Pollution" page  
-  vii. Go to "Quiz" page  
-  viii. Take the quiz.
+  i. Go to "Quiz" page  
+  ii. Take the quiz. 
+  iii. Get 5 or more questions correct. Confetti will be shown.
+  iv. Get less than 5 questiosn correct, no confetti will be shown.
+  
+  
   
 Our user was able to perform the tasks easily and confidently without any issues encountered. 
 
