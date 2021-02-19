@@ -19,10 +19,15 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 5. Scroll to top on reload
 
 ### global-warming.html
+1. Live data charts
+2. Lottie animation loader for chart
 
 ### pollution.html
+1. Air quality index map
 
 ### quiz.html
+1. Quiz on the content from global warming to pollution
+2. Confetti Effects upon passing the test with a certain percentage
 
 ## Technologies Used
 1. HTML
@@ -36,12 +41,14 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 ## Testing
 
 ## Credits
-Template reference from: http://exill.dk/demo/kitzu/template/video.html  
+Design Template: http://exill.dk/demo/kitzu/template/video.html  
 Online free logo maker: https://www.freelogodesign.org/  
-Hero Images: https://unsplash.com/  
-Video in index.html: https://www.youtube.com/watch?v=B5ttajMfFd4&ab_channel=AnimalSalvation
-API used: https://global-warming.org/api/ & http://aqicn.org/here/
-Quiz reference from: xxx
+Images: https://unsplash.com/  
+Video in index.html: https://www.youtube.com/watch?v=B5ttajMfFd4&ab_channel=AnimalSalvation  
+API used: https://global-warming.org/api/ & http://aqicn.org/here/  
+Quiz & Confetti Effects: https://codepen.io/rjoyce/pen/WjaZbz  
+Lottie Animations: https://lottiefiles.com/
+
 
 
 ## Website link:
