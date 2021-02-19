@@ -39,6 +39,19 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 7. Integrated Google Maps
 
 ## Testing
+We gave our user 1 scenario to test the website and these are the following information that we have collected in the test process.
+
+1. User Scenario
+  i. Go to "Global Warming" page without using the navigation bar.  
+  ii. Load the graphs  
+  iii. Briefly read through the content  
+  iv. Go to "Pollution" page  
+  v. Briefly read through the content  
+  vi. Understand the Map in "Pollution" page  
+  vii. Go to "Quiz" page  
+  viii. Take the quiz.
+  
+Our user was able to perform the tasks easily and confidently without any issues encountered. 
 
 ## Credits
 Design Template: http://exill.dk/demo/kitzu/template/video.html  
@@ -47,8 +60,9 @@ Images: https://unsplash.com/
 Video in index.html: https://www.youtube.com/watch?v=B5ttajMfFd4&ab_channel=AnimalSalvation  
 API used: https://global-warming.org/api/ & http://aqicn.org/here/  
 Quiz & Confetti Effects: https://codepen.io/rjoyce/pen/WjaZbz  
-Lottie Animations: https://lottiefiles.com/
-
+Lottie Animations: https://lottiefiles.com/  
+Global Warming content: https://global-warming.org/api/  
+Pollution content: https://medlineplus.gov/airpollution.html#:~:text=Air%20pollution%20is%20a%20mixture,may%20be%20suspended%20as%20particles.&text=When%20ozone%20forms%20air%20pollution,Some%20air%20pollutants%20are%20poisonous.
 
 
 ## Website link:
