@@ -40,6 +40,7 @@ function loadHideGraph(apiLink) {
     y.style.display = "none";
   } else {
     x.innerHTML = "Hide Graph";
+    y.innerHTML = '<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_Stt1R6.json"  background="transparent"  speed="0.8"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>';
     y.style.display = "block";
   }
 }
@@ -284,13 +285,13 @@ apiCall("temp");
 // Creating questionss and answers
 //*****************************************************************************
 var question1 = {
-  question: "What is global warming",
-  answers: ["It is the increase of temperature", "It is when we start to feel hot", "It is when the earth's core becoming hotter"],
+  question: "What is global warming?",
+  answers: ["It is the increase in temperature.", "It is when we start to feel hot.", "It is when the earth's core becomes hotter."],
   correct: 0
 };
 
 var question2 = {
-  question: "Global Warming is harmful",
+  question: "Global Warming is harmful?",
   answers: ['True', 'False'],
   correct: 0
 };
@@ -302,19 +303,19 @@ var question3 = {
 }
 
 var question4 = {
-  question: "Since the industiral revolution how much has methane levels increased?",
+  question: "Since the industrial revolution how much has methane levels increased?",
   answers: ["50%", "100%", "150%"],
   correct: 2
 };
 
 var question5 = {
-  question: "Why is Permafrost thawing bad?",
-  answers: ["It releases small amounts of methane to the atmoshpere", "It releases large amounts of methane to the atmoshpere", "It can injure sea creatures or humans if they are too close"],
+  question: "Why is permafrost thawing bad?",
+  answers: ["It releases small amounts of methane into the atmoshpere.", "It releases large amounts of methane into the atmoshpere.", "It can injure sea creatures or humans if they are too close."],
   correct: 1
 };
 
 var question6 = {
-  question: "All air pollutants are posionous.",
+  question: "All air pollutants are poisonous.",
   answers: ["True","False"],
   correct: 1
 };

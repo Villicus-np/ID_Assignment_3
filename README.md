@@ -30,6 +30,8 @@ In the design process for this assignment, we aimed to portray a minimalistic mo
 3. Bootstrap 4
 4. JavaScript
 5. JQuery
+6. Json
+7. Integrated Google Maps
 
 ## Testing
 
@@ -38,6 +40,9 @@ Template reference from: http://exill.dk/demo/kitzu/template/video.html
 Online free logo maker: https://www.freelogodesign.org/  
 Hero Images: https://unsplash.com/  
 Video in index.html: https://www.youtube.com/watch?v=B5ttajMfFd4&ab_channel=AnimalSalvation
+API used: https://global-warming.org/api/ & http://aqicn.org/here/
+Quiz reference from: xxx
+
 
 ## Website link:
 https://villicus-np.github.io/ID_Assignment_3/
